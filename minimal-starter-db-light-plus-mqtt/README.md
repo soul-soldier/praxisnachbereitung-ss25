@@ -27,3 +27,17 @@ curl -X POST "http://localhost:8000/mqtt/publish?topic=demo/test&payload=hello"
 ```
 
 Optional: WebSockets Port 9001 ist aktiviert (für Browser-Clients).
+
+## Start & Health Check
+Um den Docker-Container zu initilisieren, muss man mit folgendem Befehl die Dienste starten:
+
+1. `docker compose up -d --build`
+2. `docker compose logs -f api`
+
+Dann warten, bis api Uvicorn Running meldet
+z.B. `api-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)`
+
+Dann kann mit folgenden Links auf dem entsprechenden Port (hier im Beispiel 8000) ausführen.
+
+Browser: http://localhost:8000/health → {"status":"ok"} 
+Browser: http://localhost:8000/docs
